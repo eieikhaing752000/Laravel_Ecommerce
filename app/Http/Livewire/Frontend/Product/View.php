@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class View extends Component
 {
-    public $category,$product,$productColorSelectedQuantity;
+    public $category,$product,$productColorSelectedQuantity,$quantityCount=1;
     public function addToWishList($productId)
     {
         // dd($productId);
@@ -58,6 +58,19 @@ class View extends Component
 
         if($this->productColorSelectedQuantity==0){
             $this->productColorSelectedQuantity='outOfStock';
+        }
+    }
+    public function incrementQuantity()
+    {
+        if($this->quantityCount < 10){
+            $this->quantityCount++;
+        }
+        
+    }
+    public function decrementQuantity()
+    {
+        if($this->quantityCount > 1){
+        $this->quantityCount--;
         }
     }
     public function mount($category,$product)
