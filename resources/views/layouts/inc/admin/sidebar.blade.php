@@ -51,6 +51,12 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="{{ url('admin/payment') }}">
+              <i class="mdi mdi-view-headline menu-icon"></i>
+              <span class="menu-title">Payment</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
               <i class="mdi mdi-account-plus menu-icon"></i>
               <span class="menu-title">Users</span>
