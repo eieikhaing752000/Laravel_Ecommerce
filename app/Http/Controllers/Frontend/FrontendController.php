@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Payment;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 
@@ -44,4 +45,13 @@ class FrontendController extends Controller
             return redirect()->back();
         }
     }
+    public function thankyou()
+    {
+        return view('frontend.thank-you');
+    }
+    public function kpay()
+    {
+        return view('frontend.kpay');
+    }
+    
 }
