@@ -38,6 +38,7 @@ Route::get('thank-you',[App\Http\Controllers\Frontend\FrontendController::class,
 Route::get('kpay',[App\Http\Controllers\Frontend\FrontendController::class,'kpay']);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index']);
     
@@ -93,6 +94,16 @@ Route::controller(App\Http\Controllers\Admin\PaymentController::class)->group(fu
     Route::get('/payment/{payment}/edit','edit');
     Route::put('/payment/{payment_id}','update');
     Route::get('/payment/{payment_id}/delete','destroy');
+   });
+
+// Order Routes
+Route::controller(App\Http\Controllers\Admin\OrderController::class)->group(function(){
+    Route::get('/orders','index');
+    Route::get('/orders/{orderId}','show');
+    Route::put('/orders/{orderId}','updateOrderStatus');
+
+    Route::get('/invoice/{orderId}','viewInvoice');
+    Route::get('/invoice/{orderId}/generate','generateInvoice');
    });
 
 });
