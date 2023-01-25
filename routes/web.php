@@ -25,6 +25,15 @@ Route::get('/collections',[App\Http\Controllers\Frontend\FrontendController::cla
 Route::get('/collections/{category_slug}',[App\Http\Controllers\Frontend\FrontendController::class,'products']);
 Route::get('/collections/{category_slug}/{product_slug}',[App\Http\Controllers\Frontend\FrontendController::class,'productView']);
 
+Route::controller(App\Http\Controllers\Frontend\FrontendController::class)->group(function(){
+   Route::get('/','index');
+   Route::get('/collections','categories');
+   Route::get('/collections/{category_slug}','products');
+   Route::get('/collections/{category_slug}/{product_slug}','productView');
+   Route::get('/new-arrivals','newArrival');
+
+});
+
 Route::middleware(['auth'])->group(function(){
    Route::get('wishlist',[App\Http\Controllers\Frontend\WishlistController::class,'index']);
    Route::get('cart',[App\Http\Controllers\Frontend\CartController::class,'index']);
