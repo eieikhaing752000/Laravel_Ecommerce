@@ -19,6 +19,16 @@ class FrontendController extends Controller
         $featuredProducts=Product::where('featured','1')->latest()->take(14)->get();
         return view('frontend.index',compact('sliders','trendingProducts','newArrivalProducts','featuredProducts'));
     }
+    public function searchProducts(Request $request)
+    {
+        // dd('hit');
+        if($request->search){
+            $searchProducts=Product::where('name','LIKE','%'.$request->search.'%')->latest()->paginate(15);
+            return view('frontend.pages.search',compact('searchProducts'));
+        }else{
+            return redirect()->back()->with('message','Empty Search');
+        }
+    }
     public function newArrival()
     {
         $newArrivalProducts=Product::latest()->take(16)->get();
