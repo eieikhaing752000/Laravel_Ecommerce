@@ -80,17 +80,24 @@
 </head>
 <body>
 
+    <div class="text-center">
+        <h2>Thank you for your Order</h2>
+        <p>Thank you for purchasing with {{ $appSetting->website_name ?? "Funda of web IT"}}
+        <br>
+        Your order items and details are provided below.
+        </p>
+    </div>
     <table class="order-details">
         <thead>
             <tr>
                 <th width="50%" colspan="2">
-                    <h2 class="text-start">Funda Ecommerce</h2>
+                    <h2 class="text-start">{{ $appSetting->website_name }}</h2>
                 </th>
                 <th width="50%" colspan="2" class="text-end company-data">
                     <span>Invoice Id: #{{ $order->id }}</span> <br>
                     <span>Date:{{date('d / m / Y')}}</span> <br>
-                    <span>Zip code : 560077</span> <br>
-                    <span>Address: #555, Main road, shivaji nagar, Bangalore, India</span> <br>
+                    <span>Email Id: {{ $appSetting->email }}</span> <br>
+                    <span>Address:{{ $appSetting->address }}</span> <br>
                 </th>
             </tr>
             <tr class="bg-blue">
